@@ -37,30 +37,32 @@ void loadTrainingDogImages(vector<Image>* dataset){
 
 void calculateDistances(vector<Image>* dataset,Mat& test_image){
   
-  int total_test_pixels=test_image.rows * test_image.cols * test_image.channels();
+  int total_test_pixels=test_image.rows * test_image.cols * test_image.channels();  //total number of elements in the test image
   for(int i=0; i<dataset->size(); i++){
     
     Mat resized_image;
     
-    resize( (*dataset)[i].img_data , resized_image, Size(test_image.size().width, test_image.size().height), INTER_LINEAR);
+    resize( (*dataset)[i].img_data , resized_image, Size(test_image.size().width, test_image.size().height), INTER_LINEAR);  //resize the dataset to the test image dimensions
     
     int distance=0;
     
-    for(int j=0; j<total_test_pixels ; j+=3){
+    for(int j=0; j<total_test_pixels ; j+=3){   
       
+      //test image rgb values
       int test_red=test_image.data[j];
       int test_green=test_image.data[j+1];
       int test_blue=test_image.data[j+2];
       
+      //dataset image[i] rgb values
       int current_red=resized_image.data[j];
       int current_green=resized_image.data[j+1];
       int current_blue=resized_image.data[j+2];
       
-      distance+=sqrt( pow((current_red-test_red),2) + pow((current_green-test_green),2) + pow((current_blue-test_blue),2) );
+      distance+=sqrt( pow((current_red-test_red),2) + pow((current_green-test_green),2) + pow((current_blue-test_blue),2) );  //calculate the distance between two pixels
        
     }
     
-    (*dataset)[i].distance=sqrt(distance);
+    (*dataset)[i].distance=sqrt(distance);   //the total distance between the 2 images
     
         
   }
@@ -135,7 +137,7 @@ int main(){
 
   
   
-  classifyImage(dataset,"dataset\\test_set\\cats\\cat.4301.jpg");
+  classifyImage(dataset,"dataset\\test_set\\cats\\cat.4301.jpg"); // one image classification function
   
   auto stop = high_resolution_clock::now();
   auto duration = duration_cast<seconds>(stop - start);
