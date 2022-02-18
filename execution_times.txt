@@ -1,2 +1,2 @@
-one image serial(vector)(excluding loading data) : 98 secs.
-one image serial(vector)(including loading data) : 113 secs.
+total serial time for one image(including loading data)= 43 seconds
+without data=6 seconds

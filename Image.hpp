@@ -16,18 +16,18 @@ private:
 public:
     Mat img_data; //the opencv mat object
     String label;  //the classification of the image
-    double distance;  //the distance to the test image
     
-    Image(Mat img, String lbl, double dist=0){
+    
+    Image(Mat img, String lbl){
         img_data=img;
         label=lbl;
-        distance=dist;
+        
     }
     
     //overload the < operator inorder to facilitate sorting by distance
-    bool operator< (const Image& other){
-        return distance< other.distance;
-    }
+    // bool operator< (const Image& other){
+    //     return distance< other.distance;
+    // }
     
 };
 
