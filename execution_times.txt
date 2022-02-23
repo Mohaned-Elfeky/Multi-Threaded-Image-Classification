@@ -1,2 +1,9 @@
-total serial time for one image(including loading data)= 43 seconds
+total serial time for one image(including loading data)= 44 seconds
 without data=6 seconds
+
+loading data serial=38 seconds
+loading data parallel=7 seconds
+
+classification parallel pixels only=13-7=6 
+
+classification parallel pixels and images=11-7=4  159--184
